@@ -21,7 +21,7 @@ public class AiController {
 			return "redirect:/";
 		} catch (Exception e) {
 			e.printStackTrace();
-    		session.setAttribute("alertMsg", "접근 실패");
+    		session.setAttribute("alertMsg", "접근 실패?");
     		return "redirect:/";
 		}
 	}
