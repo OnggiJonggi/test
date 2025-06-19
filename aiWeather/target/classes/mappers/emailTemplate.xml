@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-	<entry key="insertMeSubject">회원가입해라</entry>
-	<entry key="insertMeFirstContent"><![CDATA[<a href="http://localhost:8888/aiWeather/confirmEmail?tokenNo=]]></entry>
-	<entry key="insertMeLastContent"><![CDATA[">눌러서 회원가입 마무리</a>]]></entry>
-</properties>

@@ -5,24 +5,14 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8"/>
-    <title>안아달라고.</title>
+    <title>aiWeather</title>
   </head>
   <body>
-    <%@include file="/WEB-INF/views/common/header.jsp"%>
-	
-    <form action="${root }/sendEmail" method="post">
-      이메일 : <input type="email" name="toAddress" required/> <br />
-      제목 : <input type="text" name="subject" required/> <br />
-      내용 : <input type="text" name="content" required/> <br />
-      <button type="submit">DORO!</button>
-    </form>
-    
+  첫 시안은 YAMI가 되었습니다. 숭고한 희생...
     <hr>
     <form action="${root }/search.ai" method="post">
       입력해요 : <input type="text" name="content" required/> <br />
       <button type="submit">DORO!!</button>
     </form>
-    
-    
   </body>
 </html>
