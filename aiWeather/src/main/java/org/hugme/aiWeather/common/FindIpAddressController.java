@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class FindIpAddress {
+public class FindIpAddressController {
 	
 	
 	//서버 내부ip주소 확인
