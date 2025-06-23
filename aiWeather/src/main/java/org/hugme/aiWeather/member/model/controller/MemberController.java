@@ -23,18 +23,49 @@ public class MemberController {
 	
 	//회원가입
 	@PostMapping("member/enroll")
-	public String enroll(HttpSession session) { 
-		return null;
+	public String enroll(HttpSession session, Member m) { 
+		try {
+			int result = service.enroll(m);
+			if(result>0) {
+				return "redirect:/";
+			}else {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("alertMsg", "회원가입 실패!");
+			return null;
+		}
 	}
+	
+	//비동기 - 아이디 중복확인
+	@ResponseBody
+	@PostMapping("member/checkUserId")
+	public String checkUserId(String userId) {
+		try {
+			return service.checkUserId(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "err";
+		}
+	}
+	
 	
 	//로그인
 	@ResponseBody
 	@PostMapping("member/login")
 	public String login(HttpSession session, Member m){
 		try {
+			m = service.login(m);
+			
+			if(m == null || m.getUserNo()==null) {
+				return "noPass";
+			}
+			
 			session.setAttribute("loginUser", m);
 			return "pass";
 		} catch (Exception e) {
+			e.printStackTrace();
 			return "noPass";
 		}
 	}

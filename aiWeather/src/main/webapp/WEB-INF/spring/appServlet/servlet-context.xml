@@ -26,9 +26,12 @@
 	    <interceptor>
 	        <!-- 적용할 패턴 -->
 	        <mapping path="/videoCall/*"/>
+	        <mapping path="/member/*"/>
 	        
 	        <!-- 제외할 패턴 -->
-	        <exclude-mapping path="/insert.me"/>
+	        <exclude-mapping path="/member/enroll"/>
+	        <exclude-mapping path="/member/checkUserId"/>
+	        <exclude-mapping path="/member/login"/>
 	        
 	        <!-- 인터셉터 경로 -->
 	        <beans:bean class="org.hugme.aiWeather.common.MemberInterceptor"/>
