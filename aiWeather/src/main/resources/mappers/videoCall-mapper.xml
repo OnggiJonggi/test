@@ -19,13 +19,24 @@
 	</resultMap>
 	
 	<insert id="createRoom" parameterType="VideoCall">
-		insert into VIDEO_CALL(VC_NO
+		insert into VIDEO_CALL(
+			VC_NO
 			,USER_NO
 			,VC_ID
 			,VC_SESSION
 			,VC_NAME
 			,CREATE_TIMESTAMP
 			,MAX_PARTICIPANTS
-			,STATUS)
+			,STATUS
+			)
+		values(
+			seq_vc.nextval
+			,#{userNo}
+			,#{vcId}
+			,#{vcSession}
+			,SYSDATE
+			,#{maxParticipants}
+			,'Y'
+			)
 	</insert>
 </mapper>

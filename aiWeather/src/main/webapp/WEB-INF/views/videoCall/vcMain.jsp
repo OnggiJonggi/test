@@ -7,6 +7,7 @@
 <title>영상통화</title>
 </head>
 <body>
+	<%@include file="/WEB-INF/views/common/header.jsp" %>
 
 	<h3>새로운 방 생성</h3>
 	<form id="createRoomForm" action="${pageScope.root}/videoCall/createRoom" method="post">

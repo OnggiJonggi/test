@@ -2,7 +2,6 @@ package org.hugme.aiWeather.videoCall.model.service;
 
 import javax.servlet.http.HttpSession;
 
-import org.hugme.aiWeather.common.OpenViduConfig;
 import org.hugme.aiWeather.common.Regexp;
 import org.hugme.aiWeather.member.model.vo.Member;
 import org.hugme.aiWeather.videoCall.model.dao.VideoCallDao;
@@ -34,19 +33,24 @@ public class VideoCallServiceImpl implements VideoCallService{
 	@Transactional(rollbackFor = {OpenViduJavaClientException.class, OpenViduHttpException.class})
 	public int createRoom(HttpSession session, VideoCall vc) throws Exception{
 		
-		//최대 참여자 유효성 확인
+		//유효성 확인
 		String maxParticipants = String.valueOf(vc.getMaxParticipants());
-		if(!maxParticipants.matches(Regexp.MAXPARTICIPANTS)) return 0;
+		String vcName = vc.getVcName();
+		if(!maxParticipants.matches(Regexp.MAXPARTICIPANTS)
+				|| !vcName.matches(Regexp.VCNAME)) return 0;
 		
 		Member m = (Member)session.getAttribute("loginUser");
 		vc.setUserNo(m.getUserNo());
 		vc.setVcId(Regexp.createUUID());
 		
+		//db에 저장하지 않는, 프론트 조회용 데이터
+		vc.setUserName(m.getUserName());
+		vc.setNameSeed(m.getNameSeed());
+		
 		//openvidu세션 생성
 		SessionProperties properties = new SessionProperties.Builder().build();
 		Session vcSession = openvidu.createSession(properties);
 		String sessionId = vcSession.getSessionId();
-		
 		vc.setVcSession(sessionId);
 		
 		return dao.createRoom(sqlSession,vc);

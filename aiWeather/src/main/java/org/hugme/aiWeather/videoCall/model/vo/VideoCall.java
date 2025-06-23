@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class VideoCall {
 	private String vcNo;
-	private String userNo;
+	private String userNo; //방장 회원번호
 	private byte[] vcId;
 	private String vcSession;
 	private String vcName;
