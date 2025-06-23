@@ -1,4 +1,4 @@
-package org.hugme.aiWeather.ai.vo;
+package org.hugme.aiWeather.ai.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

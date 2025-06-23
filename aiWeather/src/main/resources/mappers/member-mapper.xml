@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+
+	<resultMap type="Member" id="memberResultMap">
+		<result column="USER_NO" property="userNo"/>
+		<result column="USER_ID" property="userId"/>
+		<result column="USER_PWD" property="userPwd"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="NAME_SEED" property="nameSeed"/>
+	</resultMap>
+	
+	<insert id="enroll" parameterMap="Member">
+		insert into member(USER_NO, USER_ID, USER_PWD, USER_NAME
+			,NAME_SEED, ENROLLDATE, STATUS)
+		values (seq_me.nextval, #{userId}, #{userPwd}, #{userName}
+			,#{nameSeed, jdbcType=BINARY}, SYSDATE, 'Y')
+	</insert>
+	
+	<select id="checkUserId" parameterType="string" resultType="int">
+		select count(*)
+		from member
+		where user_id = #{userId}
+	</select>
+	
+	<select id="login" parameterMap="Member" resultMap="memberResultMap">
+		select USER_NO,USER_ID,USER_NAME,NAME_SEED,ENROLLDATE,MODIFYDATE
+		from member
+		where user_id = #{userId}
+		and user_pwd = #{userPwd}
+	</select>
+</mapper>

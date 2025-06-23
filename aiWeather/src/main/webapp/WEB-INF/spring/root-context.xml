@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans 
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context 
+           https://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/tx 
+           https://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 
@@ -37,4 +45,22 @@
 	 	<!-- sqlSessionFactory 넣어주기 -->
 	 	<constructor-arg ref="sqlSessionFactory"/>
 	 </bean>
+	 
+    <!-- 4) 트랜잭션 처리 -->
+    <tx:annotation-driven/>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 5) @Service, @Repository, @Component 어노테이션을 스캔할 패키지 -->
+    <context:component-scan base-package="com.gaonna.yami" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
+    
+    <!-- properties파일 연결 -->
+    <context:property-placeholder 
+	    location="classpath:config/openvidu-config.properties"
+	    ignore-unresolvable="true"/>
 </beans>

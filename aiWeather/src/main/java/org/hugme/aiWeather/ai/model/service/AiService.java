@@ -1,4 +1,4 @@
-package org.hugme.aiWeather.ai.service;
+package org.hugme.aiWeather.ai.model.service;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.text.StringEscapeUtils;
-import org.hugme.aiWeather.ai.vo.AiRequest;
-import org.hugme.aiWeather.ai.vo.Message;
+import org.hugme.aiWeather.ai.model.vo.AiRequest;
+import org.hugme.aiWeather.ai.model.vo.Message;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class AiService {
 	private Properties prop = new Properties();
 	public AiService() {
 		try {
-			ClassPathResource resource = new ClassPathResource("mappers/perplexity.xml");
+			ClassPathResource resource = new ClassPathResource("perplexity.xml");
 			InputStream inputStream = resource.getInputStream();
 			prop.loadFromXML(inputStream);
 			inputStream.close();

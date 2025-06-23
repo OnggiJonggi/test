@@ -23,29 +23,37 @@ pageEncoding="UTF-8"%>
       <button type="submit">DORO!!</button>
     </form>
     
+    
     <hr>
-    <a href="${root}/videoCallMain">영상통화</a>
+    <a href="${root}/member/login">회원가입</a>
+    <a href="${root}/member/enroll">회원가입</a>
+    
     <hr>
-    <a href="${root}/screenShareMain">화면공유</a>
+    <a href="${root}/videoCall/vcMain">영상통화</a>
+    <hr>
+    <a href="${root}/screenShare/main">화면공유</a>
     
     
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('#getIpBtn').click(function(){
-            $.ajax({
-                url : "${root}/findServerPrivateIP",
-                method : "post",
-                data : {},
-                success : function(result){
-                    $('#serverIpDiv').text('서버 내부 ip주소 : ' + result);
-                },
-                error : function(){
-                    console.log('통신 실패');
-                }
-            });
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//내부 ip주소 알아보기
+    $('#getIpBtn').click(function(){
+        $.ajax({
+            url : "${root}/findServerPrivateIP",
+            method : "post",
+            data : {},
+            success : function(result){
+                $('#serverIpDiv').text('서버 내부 ip주소 : ' + result);
+            },
+            error : function(){
+                console.log('통신 실패');
+            }
         });
     });
-    </script>
+});
+
+</script>
     
   </body>
 </html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="videoCallMapper">
+
+	<resultMap type="VideoCall" id="videoCallResultMap">
+		<result column="VC_NO" property="vcNo"/>
+		<result column="USER_NO" property="userNo"/>
+		<result column="VC_ID" property="vcId"/>
+		<result column="VC_SESSION" property="vcSession"/>
+		<result column="VC_NAME" property="vcName"/>
+		<result column="CREATE_TIMESTAMP" property="createTimestamp"/>
+		<result column="MAX_PARTICIPANTS" property="maxParticipants"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="NAME_SEED" property="nameSeed"/>
+		<result column="CURR_PARTICIPANTS" property="currParticipants"/>
+	</resultMap>
+	
+	<insert id="createRoom" parameterType="VideoCall">
+		insert into VIDEO_CALL(VC_NO
+			,USER_NO
+			,VC_ID
+			,VC_SESSION
+			,VC_NAME
+			,CREATE_TIMESTAMP
+			,MAX_PARTICIPANTS
+			,STATUS)
+	</insert>
+</mapper>

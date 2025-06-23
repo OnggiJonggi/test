@@ -7,12 +7,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>header</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 </head>
 <body>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-
+<c:set var="loginUser" value="${sessionScope.loginUser}"/>
 <script>
 	let msg = "${alertMsg}"
 	if(msg!=""){
