@@ -17,7 +17,7 @@
 		insert into member(USER_NO, USER_ID, USER_PWD, USER_NAME
 			,NAME_SEED, ENROLLDATE, STATUS)
 		values (seq_me.nextval, #{userId}, #{userPwd}, #{userName}
-			,#{nameSeed, jdbcType=RAW}, SYSDATE, 'Y')
+			,#{nameSeed, jdbcType=BINARY}, SYSDATE, 'Y')
 	</insert>
 	
 	<select id="checkUserId" parameterType="string" resultType="int">

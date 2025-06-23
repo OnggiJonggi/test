@@ -26,7 +26,7 @@ public class AiService {
 	private Properties prop = new Properties();
 	public AiService() {
 		try {
-			ClassPathResource resource = new ClassPathResource("mappers/perplexity.xml");
+			ClassPathResource resource = new ClassPathResource("perplexity.xml");
 			InputStream inputStream = resource.getInputStream();
 			prop.loadFromXML(inputStream);
 			inputStream.close();
