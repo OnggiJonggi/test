@@ -32,6 +32,7 @@
 	<hr>
 	
 	기존 방 참여하기
+	<!-- 비동기식으로 자신의 방 리스트 불러오기 -->
 	
 	
 	<script type="text/javascript">

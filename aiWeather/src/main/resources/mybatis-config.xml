@@ -11,6 +11,7 @@
 	<typeAliases>
 		<typeAlias type="org.hugme.aiWeather.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="org.hugme.aiWeather.videoCall.model.vo.VideoCall" alias="VideoCall"/>
+		<typeAlias type="org.hugme.aiWeather.videoCall.model.vo.VcMember" alias="VcMember"/>
 	</typeAliases>
 	
 </configuration>

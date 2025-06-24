@@ -31,7 +31,7 @@ pageEncoding="UTF-8"%>
     <hr>
     <a href="${root}/videoCall/vcMain">영상통화</a>
     <hr>
-    <a href="${root}/screenShare/main">화면공유</a>
+    <a href="${root}/screenShare/ssMain">화면공유</a>
     
     
 <script type="text/javascript">
